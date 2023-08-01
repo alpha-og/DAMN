@@ -8,7 +8,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <Router>
+        <Router basename="/DAMN/">
             <App />
         </Router>
     </React.StrictMode>
