@@ -2,20 +2,20 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 // file imports
-import { About, Home, Navbar, Notes } from "./components/components.js";
+import { Navbar } from "./components/components.js";
+import { About, Home, Notes } from "./pages/pages.js";
 
 function App() {
     return (
-        <>
+        <div className="flex flex-col">
             <Navbar />
-            <h1>This is the App</h1>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/home" element={<Home />}></Route>
                 <Route path="/Notes" element={<Notes />}></Route>
                 <Route path="/About" element={<About />}></Route>
             </Routes>
-        </>
+        </div>
     );
 }
 
