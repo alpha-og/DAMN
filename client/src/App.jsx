@@ -7,7 +7,7 @@ import { About, Home, Notes } from "./pages/pages.js";
 
 function App() {
     return (
-        <div className="flex flex-col">
+        <div>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />}></Route>

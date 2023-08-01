@@ -3,14 +3,8 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 // file imports
 import { routes } from "../assets/constants";
+import { Branding } from "./components";
 
-const Branding = () => {
-    return (
-        <h1 className="text-xl font-bold text-violet-400">
-            D.A.M.<span>N</span>
-        </h1>
-    );
-};
 const Navbar = () => {
     const [navrail, setNavrail] = useState(false);
     const toggleNavrail = () => {

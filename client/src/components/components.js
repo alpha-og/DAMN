@@ -1,3 +1,4 @@
+import Branding from "./Branding";
 import Navbar from "./Navbar";
 
-export { Navbar };
+export { Branding, Navbar };
