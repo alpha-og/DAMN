@@ -1,5 +1,4 @@
 // react imports
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 // file imports
 import { Navbar } from "./components/components.js";
@@ -11,7 +10,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/home" element={<Home />}></Route>
+                <Route path="/Home" element={<Home />}></Route>
                 <Route path="/Notes" element={<Notes />}></Route>
                 <Route path="/About" element={<About />}></Route>
             </Routes>

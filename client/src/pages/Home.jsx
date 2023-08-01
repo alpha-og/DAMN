@@ -1,6 +1,3 @@
-import React from "react";
-import { Branding } from "../components/components";
-
 const Home = () => {
     return (
         <div className="flex flex-col w-full h-max text-white">
