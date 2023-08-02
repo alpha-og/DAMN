@@ -7,15 +7,15 @@ const Home = () => {
                 </h1>
                 <div className="flex flex-row justify-between items-center w-full px-2">
                     <div>
-                        <p className=" text-2xl">
+                        <p className="text-2xl">
                             <span className="font-bold text-violet-400">D</span>
                             ata Science.
                         </p>
-                        <p className=" text-2xl py-2">
+                        <p className="text-2xl py-2">
                             <span className="font-bold text-violet-400">A</span>
                             rtificial Intelligence.
                         </p>
-                        <p className=" text-2xl">
+                        <p className="text-2xl">
                             <span className="font-bold text-violet-400">M</span>
                             achine Learning.
                         </p>

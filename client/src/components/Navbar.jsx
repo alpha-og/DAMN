@@ -11,7 +11,7 @@ const Navbar = () => {
         setNavrail((navrail) => !navrail);
     };
     return (
-        <div className="fixed top-5 w-full text-white">
+        <div className="fixed top-5 w-full z-20 text-white">
             <nav className=" flex flex-row items-center h-12 px-5 mx-5 rounded-2xl bg-slate-900 bg-opacity-60 backdrop-blur-md">
                 <Branding />
                 <ul className="md:flex hidden flex-row ml-auto ">

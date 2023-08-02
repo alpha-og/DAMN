@@ -2,7 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 // file imports
 import { Navbar } from "./components/components.js";
-import { About, Home, Notes } from "./pages/pages.js";
+import { About, Home, Notes, PageNotFound } from "./pages/pages.js";
 
 function App() {
     return (
@@ -13,6 +13,7 @@ function App() {
                 <Route path="/home" element={<Home />}></Route>
                 <Route path="/notes" element={<Notes />}></Route>
                 <Route path="/about" element={<About />}></Route>
+                <Route path="/*" element={<PageNotFound />}></Route>
             </Routes>
         </div>
     );
