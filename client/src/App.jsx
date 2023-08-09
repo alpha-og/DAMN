@@ -1,7 +1,7 @@
 // react imports
 import { Route, Routes } from "react-router-dom";
 // file imports
-import { Navbar } from "./components/components.js";
+import { Footer, Navbar } from "./components/components.js";
 import { About, Home, Notes, PageNotFound } from "./pages/pages.js";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/*" element={<PageNotFound />}></Route>
             </Routes>
+            <Footer></Footer>
         </div>
     );
 }

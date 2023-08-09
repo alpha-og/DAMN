@@ -12,9 +12,13 @@ const Navbar = () => {
     };
     return (
         <div className="fixed top-5 w-full z-20 text-white">
-            <nav className=" flex flex-row items-center h-12 px-5 mx-5 rounded-2xl bg-slate-900 bg-opacity-60 backdrop-blur-md">
+            <nav className=" flex flex-row items-center h-12 px-5 mx-5 rounded-2xl bg-slate-900 bg-opacity-60 backdrop-blur-md shadow-md">
                 <Branding />
-                <ul className="md:flex hidden flex-row ml-auto ">
+                <ul
+                    className={
+                        navrail ? "hidden" : "md:flex hidden flex-row ml-auto "
+                    }
+                >
                     {routes.map((route, index) => (
                         <li
                             className="flex flex-row ml-2 rounded-lg hover:cursor-pointer hover:text-violet-600 hover:bg-slate-900 hover:shadow-sm hover:shadow-violet-500 hover:scale-105 ease-in-out duration-500"
@@ -28,15 +32,19 @@ const Navbar = () => {
                 </ul>
                 <AiOutlineMenu
                     size={28}
-                    className="md:hidden block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
+                    className={
+                        navrail
+                            ? "block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
+                            : "md:hidden block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
+                    }
                     onClick={toggleNavrail}
                 />
             </nav>
             <nav
                 className={
                     navrail
-                        ? "fixed top-5 left-5 w-1/2 h-[95%] p-5 rounded-xl bg-slate-900 bg-opacity-60 backdrop-blur-md ease-in-out duration-500"
-                        : "fixed top-5 -left-full w-1/2 h-[95%] p-5 rounded-xl bg-slate-900 bg-opacity-60 backdrop-blur-md ease-in-out duration-500"
+                        ? "fixed top-5 left-5 md:w-1/4 w-1/2 h-[95%] p-5 rounded-xl bg-slate-900 bg-opacity-60 backdrop-blur-md ease-in-out duration-500"
+                        : "fixed top-5 -left-full md:w-1/4 w-1/2 h-[95%] p-5 rounded-xl bg-slate-900 bg-opacity-60 backdrop-blur-md ease-in-out duration-500"
                 }
             >
                 <div className="flex flex-row items-center pl-5">
