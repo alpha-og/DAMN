@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // module imports
-import axios from "axios";
 
 const Card = (props) => {
     const { subjectName } = props;
