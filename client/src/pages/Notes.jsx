@@ -69,7 +69,7 @@ const Viewer = () => {
             .then((res) => dispatch(addNote(res.data)));
 
     return (
-        <div className="border flex flex-col flex-grow ml-2">
+        <div className="flex flex-col flex-grow ml-2">
             <p>{currentNote && atob(currentNote.content)}</p>
         </div>
     );
