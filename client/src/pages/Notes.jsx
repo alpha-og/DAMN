@@ -9,13 +9,17 @@ import { setCurrentSubject, setCurrentTopic } from "../store/userSlice";
 // module imports
 import axios from "axios";
 // file imports
-import { SubjectCard, TopicCard } from "../components/components";
+import {
+    MarkdownRenderer,
+    SubjectCard,
+    TopicCard,
+} from "../components/components";
 import { addNote } from "../store/notesSlice";
 
 const Subjects = (props) => {
     const { subjects } = props;
     return (
-        <div className="grid auto-rows-max gap-2 flex-grow pr-2 py-2 overflow-scroll">
+        <div className=" grid auto-rows-max gap-2 flex-grow py-2 rounded-md overflow-scroll">
             {subjects &&
                 subjects.map((subject, index) => (
                     <SubjectCard key={index} subjectName={subject.name} />
@@ -40,11 +44,8 @@ const Topics = () => {
             `https://api.github.com/repos/alpha-og/42-Data-Science-AI-ML-and-DL/contents/${currentSubject}`
         )
         .then((res) => res.data.forEach((topic) => dispatch(addTopic(topic))));
-    useEffect(() => {
-        console.log(topics);
-    }, [topics]);
     return (
-        <div className="grid auto-rows-max gap-2 flex-grow pr-2 py-2 overflow-scroll">
+        <div className="grid auto-rows-max gap-2 flex-grow py-2 rounded-md overflow-scroll">
             {topics &&
                 topics.map((topic, index) => (
                     <TopicCard key={index} topicName={topic.name} />
@@ -57,9 +58,7 @@ const Viewer = () => {
     const dispatch = useDispatch();
     const currentTopic = useSelector((store) => store.userReducer.currentTopic);
     const currentNote = useSelector((state) => state.notesReducer.notes).filter(
-        (note) =>
-            note.name == currentTopic.split("/")[1] &&
-            !note.name.includes(".pdf")
+        (note) => note.name == currentTopic.split("/")[1]
     )[0];
     currentTopic &&
         axios
@@ -68,9 +67,22 @@ const Viewer = () => {
             )
             .then((res) => dispatch(addNote(res.data)));
 
+    const [decodedText, setDecodedText] = useState(undefined);
+
+    useEffect(() => {
+        // currentNote && console.log(atob(currentNote.content));
+        const arrayBuffer = new Uint8Array(
+            [...atob(currentNote ? currentNote.content : "")].map((char) =>
+                char.charCodeAt(0)
+            )
+        ).buffer;
+        setDecodedText(new TextDecoder("utf-8").decode(arrayBuffer));
+    }, [currentNote]);
     return (
-        <div className="flex flex-col flex-grow ml-2">
-            <p>{currentNote && atob(currentNote.content)}</p>
+        <div className="flex flex-col flex-grow ml-2 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400">
+            <div className="markdown rounded-lg overflow-scroll">
+                {decodedText && <MarkdownRenderer content={decodedText} />}
+            </div>
         </div>
     );
 };
@@ -98,16 +110,18 @@ const Notes = () => {
 
     return (
         <div className="flex flex-col w-full h-max min-h-screen text-white px-5">
-            <div className="flex flex-row w-full h-[85vh] p-3 mt-24 mb-12 bg-slate-900 rounded-lg">
-                <div className="flex flex-col md:w-1/4 w-2/5 border-r-2 border-slate-800">
-                    <BiArrowBack
-                        size={28}
-                        className="flex-shrink-0 p-1 hover:cursor-pointer"
-                        onClick={() => {
-                            dispatch(setCurrentSubject(""));
-                            dispatch(setCurrentTopic(""));
-                        }}
-                    />
+            <div className="flex flex-row w-full h-[85vh] mt-24 mb-12">
+                <div className="flex flex-col flex-grow-0 flex-shrink-0 md:w-80 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
+                    <div>
+                        <BiArrowBack
+                            size={28}
+                            className="flex-shrink-0 p-1 hover:cursor-pointer"
+                            onClick={() => {
+                                dispatch(setCurrentSubject(""));
+                                dispatch(setCurrentTopic(""));
+                            }}
+                        />
+                    </div>
                     {selectedSubject ? (
                         <Topics />
                     ) : (
