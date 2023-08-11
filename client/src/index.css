@@ -8,8 +8,8 @@
 
 /* markdown reset */
 
-.markdown {
-    @apply leading-relaxed text-sm;
+.markdown * {
+  @apply text-[1rem]
   }
   
   @screen sm {
