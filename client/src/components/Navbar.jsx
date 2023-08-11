@@ -65,6 +65,7 @@ const Navbar = () => {
                             <Link
                                 className=" w-full px-5 py-2.5"
                                 to={route.path}
+                                onClick={toggleNavrail}
                             >
                                 {route.title}
                             </Link>
