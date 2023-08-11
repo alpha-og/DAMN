@@ -82,7 +82,7 @@
   }
   /* Blockquotes */
   .markdown blockquote {
-    @apply p-2 mx-6 bg-gray-100 mb-4 border-l-4 border-gray-400 italic;
+    @apply p-2 mx-6 bg-slate-800 mb-4 border-l-4 border-violet-600 italic;
   }
   .markdown blockquote > p {
     @apply mb-0;
