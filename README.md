@@ -15,7 +15,7 @@ The website, as of writing this Documentation, is a static SPA that has no backe
 └── client
     ├── README.md
     ├── index.html
-    ├── node_modules  [363 entries exceeds filelimit, not opening dir]
+    ├── node_modules
     ├── package-lock.json
     ├── package.json
     ├── postcss.config.js
