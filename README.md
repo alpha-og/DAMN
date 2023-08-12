@@ -8,14 +8,12 @@ The website, as of writing this Documentation, is a static SPA that has no backe
 
 ## Project Structure
 
-```
+```bash
 .
-├── Documentation.md
 ├── README.md
 └── client
     ├── README.md
     ├── index.html
-    ├── node_modules
     ├── package-lock.json
     ├── package.json
     ├── postcss.config.js
