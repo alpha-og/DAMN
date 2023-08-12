@@ -85,7 +85,7 @@ const Viewer = (props) => {
     }, [currentNote]);
 
     return (
-        <div className="flex flex-col flex-grow ml-2 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
+        <div className="flex flex-col flex-grow p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
             <div className="flex flex-row items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
                 <div className="flex flex-row">
                     <AiOutlineArrowLeft className="flex-shrink-0 hover:cursor-pointer" />
@@ -118,8 +118,8 @@ const LeftSidebar = (props) => {
         <div
             className={
                 leftSidebar
-                    ? "md:relative fixed md:left-0 left-7 flex flex-col flex-grow-0 flex-shrink-0 w-80 md:h-auto h-[85vh] p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
-                    : "fixed -left-full flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    ? "md:relative fixed md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 md:h-auto h-[85vh] p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    : "fixed -left-full flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
             }
         >
             <div className="flex flex-row justify-between items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
