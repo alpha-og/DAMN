@@ -2,6 +2,13 @@
 
 Home of the codebase for the supplementary website to the Data Science, AI, ML and DL notes [repository](https://github.com/alpha-og/42-Data-Science-AI-ML-and-DL). The website will serve as an easy to use interface for the markdown notes available at the aforementioned repository.
 
+## Todo
+
+- [ ] Backlinking/ hyperlinking across notes on the website
+- [ ] Image resources are not displayed properly at the moment which has to be fixed
+- [ ] Responsive design for mobile
+- [ ] Fine tuning the UI to be more consistent
+
 # Documentation
 
 The website, as of writing this Documentation, is a static SPA that has no backend, other than the GitHub Pages service that enables deployment of the website. The client side of the website is a React application made with the help of Vite and is styled using TailwindCSS with PostCSS as a preprocessor.
