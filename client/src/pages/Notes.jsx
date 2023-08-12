@@ -111,7 +111,7 @@ const Notes = () => {
     return (
         <div className="flex flex-col w-full h-max min-h-screen text-white px-5">
             <div className="flex flex-row w-full h-[85vh] mt-24 mb-12">
-                <div className="flex flex-col flex-grow-0 flex-shrink-0 md:w-80 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
+                <div className="flex flex-col flex-grow-0 flex-shrink-0 md:w-80 w-64 p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
                     <div>
                         <BiArrowBack
                             size={28}
