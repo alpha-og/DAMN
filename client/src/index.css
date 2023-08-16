@@ -9,7 +9,7 @@
 /* markdown reset */
 
 .markdown * {
-  @apply text-[1rem]
+  @apply text-[1rem];
   }
   
   @screen sm {

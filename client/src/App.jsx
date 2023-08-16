@@ -1,4 +1,5 @@
 // react imports
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 // file imports
 import { Footer, Navbar } from "./components/components.js";

@@ -11,7 +11,8 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 
 const MarkdownRenderer = (props) => {
-    const { content } = props;
+    let { content } = props;
+    content = content && content.replace(/(\\\\)/g, "\\\\\\\\");
     const [processedContent, setProcessedContent] = useState(Fragment);
 
     useEffect(() => {
@@ -24,6 +25,10 @@ const MarkdownRenderer = (props) => {
             .processSync(content).result;
         setProcessedContent(result);
     }, [content]);
+
+    useEffect(() => {
+        window.MathJax && window.MathJax.typesetPromise();
+    }, [processedContent]);
 
     return <>{processedContent}</>;
 };
