@@ -23,7 +23,7 @@ import {
 const Subjects = (props) => {
     const { subjects } = props;
     return (
-        <div className=" grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-scroll">
+        <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-y-scroll">
             {subjects &&
                 subjects.map((subject, index) => (
                     <SubjectCard key={index} subjectName={subject.name} />
@@ -49,7 +49,7 @@ const Topics = () => {
         )
         .then((res) => res.data.forEach((topic) => dispatch(addTopic(topic))));
     return (
-        <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-scroll">
+        <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-y-scroll">
             {topics &&
                 topics.map((topic, index) => (
                     <TopicCard key={index} topicName={topic.name} />
@@ -100,7 +100,7 @@ const Viewer = (props) => {
                     onClick={() => setLeftSidebar((state) => !state)}
                 />
             </div>
-            <div className="mt-2 markdown rounded-lg overflow-scroll">
+            <div className="mt-2 markdown rounded-lg overflow-y-scroll">
                 {decodedText && <MarkdownRenderer content={decodedText} />}
             </div>
         </div>
@@ -118,8 +118,8 @@ const LeftSidebar = (props) => {
         <div
             className={
                 leftSidebar
-                    ? "md:relative fixed md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 md:h-auto h-[85vh] p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
-                    : "fixed -left-full flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    ? "md:relative absolute md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 h-[85vh] p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    : "absolute -left-full flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
             }
         >
             <div className="flex flex-row justify-between items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">

@@ -6,6 +6,24 @@
     background-color: rgb(24 24 27);
 }
 
+* {
+  @apply scrollbar;
+  scrollbar-color: rgb(55, 65, 81) rgba(255,255,255,0);
+}
+
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply rounded-lg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-lg;
+
+}
+
 /* markdown reset */
 
 .markdown * {

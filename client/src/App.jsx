@@ -7,7 +7,7 @@ import { About, Home, Notes, PageNotFound } from "./pages/pages.js";
 
 function App() {
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />}></Route>
