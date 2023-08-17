@@ -10,7 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNote } from "../store/notesSlice";
 import { addSubject } from "../store/subjectsSlice";
 import { addTopic } from "../store/topicsSlice";
-import { setCurrentSubject, setCurrentTopic } from "../store/userSlice";
+import {
+    popTopicB,
+    popTopicF,
+    pushTopicB,
+    pushTopicF,
+    setCurrentSubject,
+    setCurrentTopic,
+} from "../store/userSlice";
 // module imports
 import axios from "axios";
 // comoponent imports
@@ -60,6 +67,12 @@ const Topics = () => {
 
 const Viewer = (props) => {
     const dispatch = useDispatch();
+    const notesStackBackward = useSelector(
+        (store) => store.userReducer.notesStackBackward
+    );
+    const notesStackForward = useSelector(
+        (store) => store.userReducer.notesStackForward
+    );
     const currentTopic = useSelector((store) => store.userReducer.currentTopic);
     const currentNote = useSelector((state) => state.notesReducer.notes).filter(
         (note) => note.name == currentTopic.split("/")[1]
@@ -88,8 +101,38 @@ const Viewer = (props) => {
         <div className="flex flex-col flex-grow p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
             <div className="flex flex-row items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
                 <div className="flex flex-row">
-                    <AiOutlineArrowLeft className="flex-shrink-0 hover:cursor-pointer" />
-                    <AiOutlineArrowRight className="flex-shrink-0 ml-2 hover:cursor-pointer" />
+                    <AiOutlineArrowLeft
+                        className="flex-shrink-0 hover:cursor-pointer"
+                        onClick={() => {
+                            if (notesStackBackward.length > 0) {
+                                dispatch(pushTopicF(currentTopic));
+                                dispatch(
+                                    setCurrentTopic(
+                                        notesStackBackward.slice(
+                                            notesStackBackward.length - 1
+                                        )[0]
+                                    )
+                                );
+                                dispatch(popTopicB());
+                            }
+                        }}
+                    />
+                    <AiOutlineArrowRight
+                        className="flex-shrink-0 ml-2 hover:cursor-pointer"
+                        onClick={() => {
+                            if (notesStackForward.length > 0) {
+                                dispatch(pushTopicB(currentTopic));
+                                dispatch(
+                                    setCurrentTopic(
+                                        notesStackForward.slice(
+                                            notesStackForward.length - 1
+                                        )[0]
+                                    )
+                                );
+                                dispatch(popTopicF());
+                            }
+                        }}
+                    />
                 </div>
                 <div className="flex flex-row items-center justify-evenly ml-5 text-sm">
                     Stack

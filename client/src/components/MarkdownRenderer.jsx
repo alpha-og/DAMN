@@ -3,7 +3,11 @@
 // react imports
 import React, { Fragment, createElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentTopic } from "../store/userSlice";
+import {
+    pushTopicB,
+    setCurrentSubject,
+    setCurrentTopic,
+} from "../store/userSlice";
 // module imports
 import rehypeRaw from "rehype-raw";
 import rehypeReact from "rehype-react";
@@ -16,6 +20,9 @@ import { unified } from "unified";
 
 const Backlink = ({ children }) => {
     const dispatch = useDispatch();
+
+    const currentTopic = useSelector((state) => state.userReducer.currentTopic);
+
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     const match = children[0];
     const subject = subjects.filter(
@@ -23,10 +30,16 @@ const Backlink = ({ children }) => {
     )[0].name;
     const topic = match;
     const path = `${subject}/${topic}`;
+
+    const handleClick = () => {
+        dispatch(setCurrentSubject(subject));
+        dispatch(setCurrentTopic(`${path}.md`));
+        dispatch(pushTopicB(currentTopic));
+    };
     return (
         <span
             className="text-violet-500 hover:cursor-pointer"
-            onClick={() => dispatch(setCurrentTopic(`${path}.md`))}
+            onClick={handleClick}
         >
             {topic.slice(5)}
         </span>
@@ -35,6 +48,9 @@ const Backlink = ({ children }) => {
 
 const BacklinkwAltText = ({ children }) => {
     const dispatch = useDispatch();
+
+    const currentTopic = useSelector((state) => state.userReducer.currentTopic);
+
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     const match = children[0].match(/\d\d\.\d\d\s[\w\-\s()]+/)[0];
     const subject = subjects.filter(
@@ -42,10 +58,17 @@ const BacklinkwAltText = ({ children }) => {
     )[0].name;
     const topic = match;
     const path = `${subject}/${topic}`;
+
+    const handleClick = () => {
+        dispatch(setCurrentSubject(subject));
+        dispatch(setCurrentTopic(`${path}.md`));
+        dispatch(pushTopicB(currentTopic));
+    };
+
     return (
         <span
             className="text-violet-500 hover:cursor-pointer"
-            onClick={() => dispatch(setCurrentTopic(`${path}.md`))}
+            onClick={handleClick}
         >
             {topic.slice(5)}
         </span>
