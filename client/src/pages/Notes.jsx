@@ -20,8 +20,8 @@ import {
     TopicCard,
 } from "../components/components";
 
-const Subjects = (props) => {
-    const { subjects } = props;
+const Subjects = () => {
+    const subjects = useSelector((state) => state.subjectsReducer.subjects);
     return (
         <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-y-scroll">
             {subjects &&
@@ -109,7 +109,6 @@ const Viewer = (props) => {
 
 const LeftSidebar = (props) => {
     const dispatch = useDispatch();
-    const subjects = useSelector((state) => state.subjectsReducer.subjects);
     const selectedSubject = useSelector(
         (state) => state.userReducer.currentSubject
     );
@@ -138,28 +137,13 @@ const LeftSidebar = (props) => {
                     onClick={() => setLeftSidebar((state) => !state)}
                 />
             </div>
-            {selectedSubject ? <Topics /> : <Subjects subjects={subjects} />}
+            {selectedSubject ? <Topics /> : <Subjects />}
         </div>
     );
 };
 
 const Notes = () => {
-    const dispatch = useDispatch();
     const [leftSidebar, setLeftSidebar] = useState(true);
-
-    useEffect(() => {
-        axios
-            .get(
-                `https://api.github.com/repos/alpha-og/42-Data-Science-AI-ML-and-DL/contents/`
-            )
-            .then((res) =>
-                res.data.forEach((subject) => {
-                    subject.name !== ".gitignore" &&
-                        dispatch(addSubject(subject));
-                })
-            )
-            .catch((err) => console.log(err));
-    }, []);
 
     return (
         <div className="flex flex-col w-full h-max min-h-screen text-white px-5">

@@ -1,44 +1,52 @@
+/* eslint-disable react/prop-types */
+// react imports
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
-// file imports
+// constant imports
 import { routes } from "../assets/constants";
+// component imports
 import { Branding } from "./components";
 
-const Navbar = () => {
+const NavbarUl = (props) => {
+    const { navrail } = props;
+    return (
+        <ul className={navrail ? "hidden" : "md:flex hidden flex-row ml-auto "}>
+            {routes.map((route, index) => (
+                <li
+                    className="flex flex-row ml-2 rounded-lg hover:cursor-pointer hover:text-violet-600 hover:bg-slate-900 hover:shadow-sm hover:shadow-violet-500 hover:scale-105 ease-in-out duration-500"
+                    key={index}
+                >
+                    <Link className="px-7 py-1" to={route.path}>
+                        {route.title}
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
+};
+
+const Nav = () => {
     const [navrail, setNavrail] = useState(false);
     const toggleNavrail = () => {
         setNavrail((navrail) => !navrail);
     };
     return (
         <div className="fixed top-5 w-full z-20 text-white">
-            <nav className=" flex flex-row items-center h-12 px-5 mx-5 rounded-2xl bg-slate-900 bg-opacity-60 backdrop-blur-md shadow-md">
+            <nav className="flex flex-row items-center h-12 px-5 mx-5 rounded-2xl bg-slate-900 bg-opacity-60 backdrop-blur-md shadow-md">
                 <Branding />
-                <ul
-                    className={
-                        navrail ? "hidden" : "md:flex hidden flex-row ml-auto "
-                    }
-                >
-                    {routes.map((route, index) => (
-                        <li
-                            className="flex flex-row ml-2 rounded-lg hover:cursor-pointer hover:text-violet-600 hover:bg-slate-900 hover:shadow-sm hover:shadow-violet-500 hover:scale-105 ease-in-out duration-500"
-                            key={index}
-                        >
-                            <Link className="px-7 py-1" to={route.path}>
-                                {route.title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-                <AiOutlineMenu
-                    size={28}
-                    className={
-                        navrail
-                            ? "block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
-                            : "md:hidden block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
-                    }
-                    onClick={toggleNavrail}
-                />
+                <div className="flex flex-row justify-evenly items-center ml-auto">
+                    {!navrail && <NavbarUl />}
+                    <AiOutlineMenu
+                        size={28}
+                        className={
+                            navrail
+                                ? "block p-1 ml-auto hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
+                                : "md:hidden block p-1 hover:cursor-pointer hover:text-violet-600 ease-in-out duration-500"
+                        }
+                        onClick={toggleNavrail}
+                    />
+                </div>
             </nav>
             <nav
                 className={
@@ -77,4 +85,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Nav;

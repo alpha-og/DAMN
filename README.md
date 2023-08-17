@@ -4,10 +4,10 @@ Home of the codebase for the supplementary website to the Data Science, AI, ML a
 
 ## Todo
 
-- [ ] Backlinking/ hyperlinking across notes on the website
-- [ ] Image resources are not displayed properly at the moment which has to be fixed
-- [ ] Responsive design for mobile
-- [ ] Fine tuning the UI to be more consistent
+-   [x] Backlinking/ hyperlinking across notes on the website
+-   [ ] Image resources are not displayed properly at the moment which has to be fixed
+-   [ ] Responsive design for mobile
+-   [ ] Fine tuning the UI to be more consistent
 
 # Documentation
 
