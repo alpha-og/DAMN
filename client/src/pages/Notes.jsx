@@ -56,7 +56,7 @@ const Topics = () => {
         )
         .then((res) => res.data.forEach((topic) => dispatch(addTopic(topic))));
     return (
-        <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-y-scroll">
+        <div className="grid auto-rows-max gap-2 flex-grow mt-2  rounded-md overflow-y-scroll">
             {topics &&
                 topics.map((topic, index) => (
                     <TopicCard key={index} topicName={topic.name} />
@@ -98,7 +98,7 @@ const Viewer = (props) => {
     }, [currentNote]);
 
     return (
-        <div className="flex flex-col flex-grow p-4 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
+        <div className="flex flex-col flex-grow w-full p-4 z-[0] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500">
             <div className="flex flex-row items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
                 <div className="flex flex-row">
                     <AiOutlineArrowLeft
@@ -134,9 +134,41 @@ const Viewer = (props) => {
                         }}
                     />
                 </div>
-                <div className="flex flex-row items-center justify-evenly ml-5 text-sm">
-                    Stack
-                    <LiaAngleRightSolid className="text-gray-300 " />
+                <div className="flex flex-row items-center justify-start  w-full mx-5 text-sm">
+                    {notesStackBackward.length > 0 &&
+                        notesStackBackward
+                            .slice(notesStackBackward.length - 2)
+                            .map((note, index) => {
+                                return (
+                                    <span
+                                        key={index}
+                                        className="flex flex-row items-center"
+                                    >
+                                        <p>
+                                            {note &&
+                                                note
+                                                    .split("/")[1]
+                                                    .slice(
+                                                        5,
+                                                        note.split("/")[1]
+                                                            .length - 3
+                                                    )}
+                                        </p>
+                                        <LiaAngleRightSolid className="text-gray-300 " />
+                                    </span>
+                                );
+                            })}
+                    <span className="flex flex-row items-center">
+                        <p>
+                            {currentTopic &&
+                                currentTopic
+                                    .split("/")[1]
+                                    .slice(
+                                        5,
+                                        currentTopic.split("/")[1].length - 3
+                                    )}
+                        </p>
+                    </span>
                 </div>
                 <BsLayoutSidebarInset
                     className="ml-auto hover:cursor-pointer"
@@ -160,8 +192,8 @@ const LeftSidebar = (props) => {
         <div
             className={
                 leftSidebar
-                    ? "md:relative absolute md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 h-[85vh] p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
-                    : "absolute -left-full flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    ? "md:relative absolute md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 h-[85vh] p-4 mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    : "absolute -left-full flex flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
             }
         >
             <div className="flex flex-row justify-between items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
