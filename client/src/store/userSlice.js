@@ -5,8 +5,11 @@ const initialState = {
     notesStackBackward: [], // history of notes in chronoligical sequence for going back (olders to latest — L->R
     notesStackForward: [], // history of notes in chronoligical sequence for going forward(latest to Oldest — L->R
     bookmarks: [], // paths of boomarked notes [for logged in users]
-    currentSubject: "", //path of current subject
+    currentSubject: "42.00 General", //path of current subject
     currentTopic: "", // path of current note
+    currentPage: "",
+    leftSideBarState: true,
+    rightSideBarState: true,
 };
 
 const userSlice = createSlice({
@@ -18,6 +21,15 @@ const userSlice = createSlice({
         },
         setCurrentSubject: (state, action) => {
             state.currentSubject = action.payload;
+        },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
+        toggleLeftSideBarState: (state, action) => {
+            state.leftSideBarState = !state.leftSideBarState;
+        },
+        toggleRightSideBarState: (state, action) => {
+            state.RightSideBarState = !state.RightSideBarState;
         },
         pushTopicB: (state, action) => {
             state.notesStackBackward.push(action.payload);
@@ -37,9 +49,12 @@ const userSlice = createSlice({
 export const {
     setCurrentTopic,
     setCurrentSubject,
+    setCurrentPage,
     pushTopicB,
     pushTopicF,
     popTopicB,
     popTopicF,
+    toggleLeftSideBarState,
+    toggleRightSideBarState,
 } = userSlice.actions;
 export default userSlice.reducer;

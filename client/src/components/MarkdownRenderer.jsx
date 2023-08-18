@@ -25,9 +25,11 @@ const Backlink = ({ children }) => {
 
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     const match = children[0];
-    const subject = subjects.filter(
-        (subject) => subject.name.slice(0, 5) === match.slice(0, 5)
-    )[0].name;
+    const subject =
+        subjects &&
+        subjects.filter(
+            (subject) => subject.name.slice(0, 5) === match.slice(0, 5)
+        )[0].name;
     const topic = match;
     const path = `${subject}/${topic}`;
 
@@ -53,9 +55,12 @@ const BacklinkwAltText = ({ children }) => {
 
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     const match = children[0].match(/\d\d\.\d\d\s[\w\-\s()]+/)[0];
-    const subject = subjects.filter(
-        (subject) => subject.name.slice(0, 5) === match.slice(0, 5)
-    )[0].name;
+    let subject =
+        subjects &&
+        subjects.filter(
+            (subject) => subject.name.slice(0, 5) === match.slice(0, 5)
+        )[0];
+    subject = subject && subject.name;
     const topic = match;
     const path = `${subject}/${topic}`;
 

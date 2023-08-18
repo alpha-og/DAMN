@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentPage } from "../store/userSlice";
+
 const Hero = () => {
     return (
         <div className="flex flex-col items-center max-w-max px-5 mx-auto md:my-64 my-80">
@@ -28,6 +32,10 @@ const Hero = () => {
 };
 
 const Home = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setCurrentPage("Home"));
+    }, []);
     return (
         <div className="flex flex-col w-full h-max min-h-screen text-white">
             <Hero />

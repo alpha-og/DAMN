@@ -18,7 +18,11 @@ const TopicCard = (props) => {
     const dispatch = useDispatch();
     return (
         <div
-            className="px-5 py-2 bg-slate-800 rounded-md shadow-md hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-500 ease-in-out duration-300"
+            className={
+                currentTopic.split("/")[1] === topic.name
+                    ? "px-5 py-2 bg-slate-800 rounded-md shadow-md border border-violet-400 hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-500 ease-in-out duration-300"
+                    : "px-5 py-2 bg-slate-800 rounded-md shadow-md border-none hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-500 ease-in-out duration-300"
+            }
             onClick={() => {
                 dispatch(setCurrentTopic(topic.path));
                 currentTopic &&
@@ -26,8 +30,8 @@ const TopicCard = (props) => {
                     dispatch(pushTopicB(currentTopic));
             }}
         >
-            <h1>{topic.name}</h1>
-            <p className="text-gray-600">Description</p>
+            <h1>{topic.name.slice(6, topic.name.length - 3)}</h1>
+            {/* <p className="text-gray-600">Description</p> */}
         </div>
     );
 };

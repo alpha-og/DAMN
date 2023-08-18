@@ -2,8 +2,7 @@
 // react imports
 import React, { useEffect, useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { BiArrowBack } from "react-icons/bi";
-import { BsLayoutSidebarInset } from "react-icons/bs";
+import { BsLayoutSidebarInset, BsSearch } from "react-icons/bs";
 import { LiaAngleRightSolid } from "react-icons/lia";
 // redux store imports
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +14,7 @@ import {
     popTopicF,
     pushTopicB,
     pushTopicF,
+    setCurrentPage,
     setCurrentSubject,
     setCurrentTopic,
 } from "../store/userSlice";
@@ -30,7 +30,7 @@ import {
 const Subjects = () => {
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     return (
-        <div className="grid auto-rows-max gap-2 flex-grow mt-2 rounded-md overflow-y-scroll">
+        <div className="grid grid-flow-col auto-cols-max gap-2 rounded-md">
             {subjects &&
                 subjects.map((subject, index) => (
                     <SubjectCard key={index} subjectName={subject.name} />
@@ -134,7 +134,7 @@ const Viewer = (props) => {
                         }}
                     />
                 </div>
-                <div className="flex flex-row items-center justify-start  w-full mx-5 text-sm">
+                <div className="flex flex-row items-center justify-start w-full mx-5 text-sm overflow-clip">
                     {notesStackBackward.length > 0 &&
                         notesStackBackward
                             .slice(notesStackBackward.length - 2)
@@ -144,7 +144,7 @@ const Viewer = (props) => {
                                         key={index}
                                         className="flex flex-row items-center"
                                     >
-                                        <p>
+                                        <p className="max-w-[7rem] truncate">
                                             {note &&
                                                 note
                                                     .split("/")[1]
@@ -159,7 +159,7 @@ const Viewer = (props) => {
                                 );
                             })}
                     <span className="flex flex-row items-center">
-                        <p>
+                        <p className="min-w-min max-w-[50%] truncate">
                             {currentTopic &&
                                 currentTopic
                                     .split("/")[1]
@@ -171,7 +171,8 @@ const Viewer = (props) => {
                     </span>
                 </div>
                 <BsLayoutSidebarInset
-                    className="ml-auto hover:cursor-pointer"
+                    className="flex-shrink-0 ml-auto hover:cursor-pointer"
+                    size={16}
                     onClick={() => setLeftSidebar((state) => !state)}
                 />
             </div>
@@ -192,37 +193,49 @@ const LeftSidebar = (props) => {
         <div
             className={
                 leftSidebar
-                    ? "md:relative absolute md:left-0 left-5 flex flex-col flex-grow-0 flex-shrink-0 w-80 h-[85vh] p-4 mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
-                    : "absolute -left-full flex flex-col flex-grow-0 flex-shrink-0 h-[85vh] w-80 p-4 mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    ? "md:relative absolute md:left-0 left-5 right-5 flex flex-col flex-grow-0 flex-shrink-0 md:w-80 h-[85vh] p-4 md:mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
+                    : "absolute -left-full right-full flex flex-col flex-grow-0 flex-shrink-0 h-[85vh] md:w-80 p-4 mr-2 z-[1] bg-gray-900 rounded-xl shadow-md border border-violet-400 ease-in-out duration-500"
             }
         >
             <div className="flex flex-row justify-between items-center p-2 rounded-lg bg-slate-800 bg-opacity-50">
-                <BiArrowBack
+                {/* <BiArrowBack
                     className="flex-shrink-0 hover:cursor-pointer"
                     onClick={() => {
                         dispatch(setCurrentSubject(""));
-                        dispatch(setCurrentTopic(""));
+                        // dispatch(setCurrentTopic(""));
                     }}
+                /> */}
+                <BsSearch
+                    className="flex-shrink-0 hover:cursor-pointer"
+                    onClick={() => {}}
+                    size={16}
                 />
                 <div className="text-sm">
-                    <p>{selectedSubject ? selectedSubject : "Subjects"}</p>
+                    <p>{selectedSubject && selectedSubject.slice(6)}</p>
                 </div>
                 <BsLayoutSidebarInset
+                    size={16}
                     className="hover:cursor-pointer"
                     onClick={() => setLeftSidebar((state) => !state)}
                 />
             </div>
-            {selectedSubject ? <Topics /> : <Subjects />}
+            {selectedSubject && <Topics />}
         </div>
     );
 };
 
 const Notes = () => {
     const [leftSidebar, setLeftSidebar] = useState(true);
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setCurrentPage("Notes"));
+    }, []);
     return (
         <div className="flex flex-col w-full h-max min-h-screen text-white px-5">
-            <div className="flex w-full h-[85vh] mt-24 mb-12">
+            <div className="flex flex-row justify-center items-center mt-24">
+                <Subjects />
+            </div>
+            <div className="flex w-full h-[85vh] mt-6 mb-12">
                 <LeftSidebar {...{ setLeftSidebar, leftSidebar }} />
                 <Viewer {...{ setLeftSidebar }} />
             </div>
