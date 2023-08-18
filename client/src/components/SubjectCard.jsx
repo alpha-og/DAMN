@@ -18,8 +18,8 @@ const SubjectCard = (props) => {
         <div
             className={
                 currentSubject === subjectName
-                    ? "px-5 py-1 bg-slate-800 rounded-full shadow-md border border-violet-500 hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-500 ease-in-out duration-300"
-                    : "px-5 py-1 bg-slate-800 rounded-full shadow-md border-none hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-500 ease-in-out duration-300"
+                    ? "px-5 py-1 bg-slate-800 rounded-full shadow-md border border-violet-400 hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-400 ease-in-out duration-300"
+                    : "px-5 py-1 bg-slate-800 rounded-full shadow-md border-none hover:cursor-pointer hover:text-gray-900 hover:font-medium hover:bg-violet-400 ease-in-out duration-300"
             }
             onClick={() => dispatch(setCurrentSubject(subject.path))}
         >

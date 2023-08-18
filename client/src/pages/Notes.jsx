@@ -30,7 +30,7 @@ import {
 const Subjects = () => {
     const subjects = useSelector((state) => state.subjectsReducer.subjects);
     return (
-        <div className="grid grid-flow-col auto-cols-max gap-2 rounded-md">
+        <div className="flex flex-row flex-wrap justify-center items-center gap-2 w-full">
             {subjects &&
                 subjects.map((subject, index) => (
                     <SubjectCard key={index} subjectName={subject.name} />
