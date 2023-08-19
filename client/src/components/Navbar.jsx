@@ -14,7 +14,7 @@ const NavbarUl = (props) => {
         <ul className={navrail ? "hidden" : "md:flex hidden flex-row ml-auto "}>
             {routes.map((route, index) => (
                 <li
-                    className="flex flex-row ml-2 rounded-lg hover:cursor-pointer hover:text-violet-400 hover:bg-slate-900 hover:shadow-sm hover:shadow-violet-400 hover:scale-105 ease-in-out duration-500"
+                    className="flex flex-row ml-2 rounded-lg hover:cursor-pointer hover:text-accent-400 hover:bg-slate-900 hover:shadow-sm hover:shadow-violet-400 hover:scale-105 ease-in-out duration-500"
                     key={index}
                 >
                     <Link className="px-7 py-1" to={route.path}>

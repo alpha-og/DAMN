@@ -5,21 +5,21 @@ import { setCurrentPage } from "../store/userSlice";
 const Hero = () => {
     return (
         <div className="flex flex-col items-center max-w-max px-5 mx-auto md:my-64 my-80">
-            <h1 className="md:text-[11rem] sm:text-9xl text-8xl font-bold text-violet-400 ease-in-out duration-75">
+            <h1 className="md:text-[11rem] sm:text-9xl text-8xl font-bold text-accent-400 ease-in-out duration-75">
                 D.A.M.<span className="text-white">N</span>
             </h1>
             <div className="flex flex-row justify-between items-center w-full px-2">
                 <div>
                     <p className="md:text-2xl sm:text-xl text-sm ease-in-out duration-75">
-                        <span className="font-bold text-violet-400">D</span>
+                        <span className="font-bold text-accent-400">D</span>
                         ata Science.
                     </p>
                     <p className="md:text-2xl sm:text-xl text-sm md:py-2 ease-in-out duration-75">
-                        <span className="font-bold text-violet-400">A</span>
+                        <span className="font-bold text-accent-400">A</span>
                         rtificial Intelligence.
                     </p>
                     <p className="md:text-2xl sm:text-xl text-sm ease-in-out duration-75">
-                        <span className="font-bold text-violet-400">M</span>
+                        <span className="font-bold text-accent-400">M</span>
                         achine Learning.
                     </p>
                 </div>

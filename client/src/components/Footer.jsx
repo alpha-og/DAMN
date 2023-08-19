@@ -5,7 +5,7 @@ import Branding from "../components/Branding";
 
 const Footer = () => {
     return (
-        <div className=" w-screen h-48 flex items-center text-gray-600 bg-gray-900">
+        <div className="w-screen h-48 flex items-center text-gray-600 bg-primary-900">
             <div className="max-w-max p-5 mx-auto flex flex-row justify-between items-center">
                 <div className="flex flex-col justify-between h-full mr-16">
                     <Branding />
