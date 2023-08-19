@@ -74,7 +74,11 @@ const NoteViewerNav = () => {
         <div className="flex flex-row items-center p-2 rounded-lg bg-secondary-800 bg-opacity-50">
             <div className="flex flex-row">
                 <AiOutlineArrowLeft
-                    className="flex-shrink-0 hover:cursor-pointer"
+                    className={
+                        notesStackBackward.length > 0
+                            ? "flex-shrink-0 hover:cursor-pointer"
+                            : "flex-shrink-0 text-secondary-600"
+                    }
                     onClick={() => {
                         if (notesStackBackward.length > 0) {
                             dispatch(pushTopicF(currentTopic));
@@ -90,7 +94,11 @@ const NoteViewerNav = () => {
                     }}
                 />
                 <AiOutlineArrowRight
-                    className="flex-shrink-0 ml-2 hover:cursor-pointer"
+                    className={
+                        notesStackForward.length > 0
+                            ? "flex-shrink-0 ml-2 hover:cursor-pointer"
+                            : "flex-shrink-0 ml-2 text-secondary-600"
+                    }
                     onClick={() => {
                         if (notesStackForward.length > 0) {
                             dispatch(pushTopicB(currentTopic));

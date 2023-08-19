@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 // react imports
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 // redux store imports
 import { useDispatch } from "react-redux";
 import { setCurrentPage } from "../store/userSlice";

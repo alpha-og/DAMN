@@ -1,3 +1,4 @@
+// redux store imports
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentPage } from "../store/userSlice";

@@ -7,9 +7,9 @@ const initialState = {
     bookmarks: [], // paths of boomarked notes [for logged in users]
     currentSubject: "42.00 General", //path of current subject
     currentTopic: "", // path of current note
-    currentPage: "",
-    leftSideBarState: true,
-    rightSideBarState: true,
+    currentPage: "", // name of current page of the SPA
+    leftSideBarState: true, // boolean indicating the state of the left side bar
+    rightSideBarState: false, // boolean indicating the state of the right side bar
 };
 
 const userSlice = createSlice({

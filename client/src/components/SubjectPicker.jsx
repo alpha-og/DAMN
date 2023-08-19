@@ -1,5 +1,6 @@
-import React from "react";
+// redux store imports
 import { useSubjects } from "../store/getterHooks";
+// component imports
 import { SubjectCard } from "./components";
 
 const SubjectPicker = () => {

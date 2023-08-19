@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-// react imports
-import React, { useEffect, useState } from "react";
+// redux store imports
 import { useDispatch } from "react-redux";
 import { useCurrentSubject, useSubjects } from "../store/getterHooks";
 import { setCurrentSubject } from "../store/userSlice";
-// module imports
 
 // tailwindCSS styling
 const inactive =
