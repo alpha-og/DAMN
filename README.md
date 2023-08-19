@@ -6,8 +6,8 @@ Home of the codebase for the supplementary website to the Data Science, AI, ML a
 
 -   [x] Backlinking/ hyperlinking across notes on the website
 -   [ ] Image resources are not displayed properly at the moment which has to be fixed
--   [ ] Responsive design for mobile
--   [ ] Fine tuning the UI to be more consistent
+-   [x] Responsive design for mobile
+-   [x] Fine tuning the UI to be more consistent
 
 # Documentation
 
@@ -70,9 +70,78 @@ The `store` folder contains the files required for the redux store. This project
 
 ## Client Side Routing
 
+Client side routing is handled using the `react-router-dom` library. The `BrowserRouter`, `Routes` and `Route` components from the library are utilised to implement client side routing. The `App` component is wrapped within the `BrowserRouter` component and the `Routes` component is used within the `App` component. The `path` and corresponding `element` to be rendered for different routes are specified using the `Route` component. A new `Route` component is created for every route and is then wrapped within the `Routes` component. The `404 Page` is shown whenever any path other than those specified in `Route` components is provided in the URL; implemented by creating a `Route` component with a wildcard (`*`) path after the routes for all valid paths are created.
+
 ## Themeing and Colours
 
+As of writing this documentation, the website only has a `Dark` theme with the following colors from the default colour palette provided by tailwindCSS (these are base colours and we have used different shades of the base colours depending on the requirement):
+
+1. Primary — gray
+2. Secondary — slate
+3. Accent — violet
+
+We intend to implement a `Light` theme in the near future. However, for the time being the website will only support the aforementioned theme
+
 ## Redux Store
+
+The website utilises Redux Store for global state management. We have implemented Redux Toolkit instead of vanilla Redux.
+
+The store has 4 unique slices with each slice implementing its own set of reducers. Teh following are the different slices:
+
+1. `notesSlice`
+2. `subjectsSlice`
+3. `topicsSlice`
+4. `userSlice`
+
+### Notes Slice
+
+The initial state of the `notesSlice` slice consists of a single key — `notes` whose value is an empty array. The array will be comprise of `JSON objects` containing the data regarding each individual note fetched from the backend API (GitHub in this case).
+
+It comprises of the following reducers:
+
+1. `addNote` — for pushing notes into the redux store
+2. `removeNote` — for removing notes from the redux store
+
+### Subjects Slice
+
+The initial state of the `subjectsSlice` slice consists of a single key — `subjects` whose value is an empty array. The array will be comprised of `strings` containing the path of each subject
+
+It comprises of the following reducers:
+
+1. `addSubject` — for pushing subject paths into the redux store
+
+### Topics Slice
+
+The initial state of the `topicsSlice` slice consists of a single key — `topics` whose value is an empty array. The array will be comprised of `strings` containing the path of each topic
+
+It comprises of the following reducers:
+
+1. `addTopic` — for pushing topic paths into the redux store
+
+### User Slice
+
+The initial state of the `userSlice` slice consists of several keys, which are as follows:
+
+1. `user` — {feature not implemented}
+2. `notesStackBackward` — stores a chronoligical sequence of visited notes, in an array
+3. `notesStackForward` — stores a list of notes which were traversed through the `notesStackBackward` array from right to left, in an array
+4. `bookmarks` {feature not implemented}
+5. `currentSubject` — stores a string (path of the subject) that tracks the currently selected subject
+6. `currentTopic` — stores a string (path of the topic) that tracks the currently selected topic
+7. `leftSideBarState` — stores a boolean indicating the state of the left side bar
+8. `rightSideBarState` — stores a boolean indicating the state of the right side bar
+
+It comprises of the following reducers:
+
+1. `setCurrentTopic`
+2. `setCurrentSubject`
+3. `setCurrentPage`
+4. `toggleLeftSideBarState`
+5. `toggleRightSideBarState`
+6. `pushTopicB`
+7. `pushTopicF`
+8. `popTopicB`
+9. `popTopicF`
 
 ## Rendering Markdown
 
@@ -95,7 +164,7 @@ The above setup will enable client side routing and facilitate route handling ba
 
 #### Fixing the Broken Reload/ Routing
 
-The following repository: https://github.com/rafgraph/spa-github-pages, provides a guide to setting up SPAs with GitHub Pages. The same repository helps address the 404 page routing issue. The solution involves creating `404.html` file and adding a script to it which performs the re-direction. Another script must be added to the `index.html` file of the React app, before the script for the SPA is executed which modifies the relative URL beyond the base URL into a query parameter. Transforming the relative URL to a query parameter prevents the server from responding with a `404` as the request sent on reload or manual entry of the URL is sent for the `index.html` that corresponds to the URL `https://alpha-og.github.io/DAMN/`; the request has the relative URL as query parameters (example, `https://alpha-og.github.io/DAMN/?/home/`). It is also important to make sure that the `404.html` is placed in the public directory and not any other location.
+The following repository: https://github.com/rafgraph/spa-github-pages, provides a guide to setting up SPAs with GitHub Pages. The same repository helps address the 404 page routing issue. The solution involves creating a `404.html` file and adding a script to it which performs the re-direction. Another script must be added to the `index.html` file of the React app, before the script for the SPA is executed which modifies the relative URL beyond the base URL into a query parameter. Transforming the relative URL to a query parameter prevents the server from responding with a `404` as the request sent on reload or manual entry of the URL is sent for the `index.html` that corresponds to the URL `https://alpha-og.github.io/DAMN/`; the request has the relative URL as query parameters (example, `https://alpha-og.github.io/DAMN/?/home/`). It is also important to make sure that the `404.html` is placed in the public directory and not any other location.
 
 The `vite.config.js` file must include a `base` attribute corresponding to the repository name (here, `base: "/DAMN/"`). This appends the value provided to the base attribute to the base URL.
 
