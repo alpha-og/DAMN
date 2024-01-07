@@ -17,45 +17,13 @@ The website, as of writing this Documentation, is a static SPA that has no backe
 
 ```bash
 .
-├── README.md
 └── client
-    ├── README.md
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
     ├── public
-    │   ├── 404.html
-    │   └── vite.svg
     ├── src
-    │   ├── App.jsx
     │   ├── assets
-    │   │   ├── constants.js
-    │   │   └── react.svg
     │   ├── components
-    │   │   ├── Branding.jsx
-    │   │   ├── Footer.jsx
-    │   │   ├── MarkdownRenderer.jsx
-    │   │   ├── Navbar.jsx
-    │   │   ├── SubjectCard.jsx
-    │   │   ├── TopicCard.jsx
-    │   │   └── components.js
-    │   ├── index.css
-    │   ├── main.jsx
     │   ├── pages
-    │   │   ├── About.jsx
-    │   │   ├── Home.jsx
-    │   │   ├── Notes.jsx
-    │   │   ├── PageNotFound.jsx
-    │   │   └── pages.js
     │   └── store
-    │       ├── notesSlice.js
-    │       ├── redux.js
-    │       ├── subjectsSlice.js
-    │       ├── topicsSlice.js
-    │       └── userSlice.js
-    ├── tailwind.config.js
-    └── vite.config.js
 ```
 
 Since the project was initialised with Vite the file basic file structure is as expected from running `npm create vite@latest client` in the root directory of the repository. In addition to the `vite.config.js` there are also configuration files for tailwindcss (`tailwind.config.js`) and postcss (`postcss.config.js`), since I am using tailwind to style the UI and using postcss as a pre-processor.
