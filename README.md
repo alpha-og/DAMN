@@ -1,4 +1,5 @@
 # DAMN
+![image](https://github.com/alpha-og/DAMN/assets/76057001/4f76e1d0-aaff-411c-801b-e118a8577d0d)
 
 Home of the codebase for the supplementary website to the Data Science, AI, ML and DL notes [repository](https://github.com/alpha-og/42-Data-Science-AI-ML-and-DL). The website will serve as an easy to use interface for the markdown notes available at the aforementioned repository.
 
